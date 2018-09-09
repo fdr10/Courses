@@ -2,7 +2,8 @@
 \usepackage{blindtext}
 \usepackage[utf8]{inputenc}
 \usepackage{titlesec}
-\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amsfonts}
 \newcommand{\me}[1]{
 \begin{math}
 #1
@@ -31,10 +32,12 @@ For \me{n=1}. Since L is a language over an alphabet \me{\Sigma} each \me{a \in 
 \\ \\
 \begin{flushleft}
 	\textbf{Inductive Hypothesis:} \me{\forall a \in L^n, |a|=n}. Then,
-	\me{ L^{n+1} = L^nL= \{w:w =xy| x \in L^n \land y \in L\}} by property of concatenation.\\
-	Since \me{|xy| = |x| + |y|}, using the inductive hypothesis we get me{|xy| = n +1}.\\
+	\me{ L^{n+1} = L^nL= \{w:w =xy| x \in L^n \land y \in L\}} by property of concatenation.
+	
+	Since \me{|xy|  = |x| + |y|}, using the inductive hypothesis we get \me{|xy| = n +1}.
+	\newline \newline
 	By proving that every element in \me{L^n} cannot possibly be \me{L^{n+1}} and viceversa, the elements of each of these formal languages have different string length, we can conclude:
-	\\ 
+\newline \newline
 	\me{i \in \mathbb{N},L^i \cap L^{i+1} = \o} 
 
 
