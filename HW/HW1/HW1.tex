@@ -1,0 +1,60 @@
+\documentclass{report}
+\usepackage{blindtext}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage{mathtools}
+\newcommand{\me}[1]{
+\begin{math}
+#1
+\end{math}
+}
+\title{Home Work 1}
+\author{Francisco J. Díaz Riollano \\ Student ID: 802-15-2172 }
+
+
+\begin{document}
+
+\maketitle
+ %%%%%%%%%%%%%%%%%%% First Question%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{\Large{Question 1.4.1\\ \\}}
+ Can you find examples of unions of strings and alphabets that are not string alphabets?\\
+ \\
+ Let  \me{\Sigma_0 = \{0,1\}} and let  \me{\Sigma_1 = \{00,11\}}. Then \me{\Sigma = \Sigma _0 \cup \Sigma_1 } = \me{\{0,1,00,11\}.} Then \me{\rho(\omega) = (0,0,1,1)} or \me{\rho(\omega) = (0,0,11)} or \me{\rho(\omega) = (00,11)} or \me{\rho(\omega) = (00,1,1)}.
+ \\ 
+ In this example the string mapping is not well defined, therefore \me{\Sigma_0 \cup \Sigma_1} is not a \textit{string alphabet}
+ \\ \\ \\
+ Another example would be: \\
+ Let \me{\Sigma_2 = \{a,b\}} and let \me{\Sigma_3 = \{baa\}} \\
+ Let \me{\Sigma = \Sigma_2 \cup \Sigma_3} = \me{\{a,b,baa\}}\\
+ Let \me{\omega = baa} which is a string of the alleged alphabet.
+ Then \me{\rho(\omega) = (b,a,a)} or  \me{\rho(\omega) = (baa)}. Thus, this other example is not a \textit{string alphabet}.
+ %%%%%%%%%%%%%%%%%%% First Question%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ 
+ 
+ %%%%%%%%%%%%%%%%%%% Second Question%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\paragraph{\Large{Question 1.4.2\\ \\}}
+Alice said that any finite union of string of the same length is a string alphabet. Is Alice right?
+\\ \\
+Proof: \\\\
+Let P(x) =: "x is a string alphabet"\\
+Let \me{\Sigma_0 = \{ a1,a2,\dots,ak\}} and let  \me{\Sigma_1 = \{ b1,b2,\dots,bn\}} 
+\\ \\
+Let \me{\Sigma = \{ \omega \mid (\omega = \Sigma_0 \cup \Sigma_1) \land ((\forall a \in \Sigma_0)(\forall b \in \Sigma_1 )|a| = |b|) \}}
+\\ 
+\\
+\me{(\forall \omega \in \Sigma)P(\omega)}
+\\ 
+\\
+\\
+\me{(\forall \omega_0 \in \Sigma_0)(\forall \omega_1 \in \Sigma_1)} \me{ \omega_0 \notin \Sigma \iff (\omega_0 = \omega1) \land (\omega_1 \in \Sigma)}, by property of sets. Thus \me{\omega \in \Sigma} is unique and of the same length. Since every element in \me{\Sigma},when given a tuple \me{\rho(\omega ^*)} = T, then \me{(\forall t \in T)} will have a single mapping to the \textit{string alphabet}\me{\Sigma}.
+\\
+\\
+\begin{flushright}
+Q.E.D
+\end{flushright}
+
+ %%%%%%%%%%%%%%%%%%% Second Question%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
