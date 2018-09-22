@@ -21,7 +21,11 @@
  Is it the case that for each \me{i \in \mathbb{N},L^i \cap L^{i+1} = \o} ? If this indeed the case, prove it. Otherwise provide a counterexample.\\
  \\ \\
 %%%%%%%%%%%%%%%%%%% First Question%%%%%%%%%%%%%%%%%%%%%%%%
-Let L be a formal language over an alphabet \me{\Sigma}.\\  Such that \me{L = \{l:} l is a string over \me{\Sigma \}}
+
+If \me{L} is not a string alphabet then this statement is False. A counterexample would be \me{L =\{0,00\}}, then \me{L^2 = \{00,000,000,0000\}}. Thus we have arrived at a contradiction.
+\newline
+This would be true if \me{\Sigma} were a string alphabet. As such:
+\\ Let L be a formal language over an alphabet \me{\Sigma}.\\  Such that \me{L = \{l:} l is a string over \me{\Sigma \}}
 \\ \\
 Proof:
 We first demonstrate by induction that \me{\forall a \in L^n,|a| = n}. \\ \\

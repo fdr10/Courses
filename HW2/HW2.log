@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  9 SEP 2018 11:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  22 SEP 2018 10:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -161,52 +161,57 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Warning: Command \o invalid in math mode on input line 21.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--33
+Underfull \hbox (badness 10000) in paragraph at lines 21--24
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--33
+Underfull \hbox (badness 10000) in paragraph at lines 21--24
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--33
+Underfull \hbox (badness 10000) in paragraph at lines 21--24
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--33
+Underfull \hbox (badness 10000) in paragraph at lines 21--24
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--33
+Underfull \hbox (badness 10000) in paragraph at lines 25--37
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--33
+Underfull \hbox (badness 10000) in paragraph at lines 25--37
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--33
+Underfull \hbox (badness 10000) in paragraph at lines 25--37
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--33
+Underfull \hbox (badness 10000) in paragraph at lines 25--37
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--33
+Underfull \hbox (badness 10000) in paragraph at lines 25--37
 
  []
 
 
-LaTeX Warning: Command \o invalid in math mode on input line 41.
+Underfull \hbox (badness 10000) in paragraph at lines 25--37
+
+ []
+
+
+LaTeX Warning: Command \o invalid in math mode on input line 45.
 
 [1] (./HW2.aux) ) 
 Here is how much of TeX's memory you used:
@@ -228,7 +233,7 @@ r12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
 fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm1
 0.pfb>
-Output written on HW2.pdf (2 pages, 98196 bytes).
+Output written on HW2.pdf (2 pages, 98863 bytes).
 PDF statistics:
  51 PDF objects out of 1000 (max. 8388607)
  36 compressed objects within 1 object stream
