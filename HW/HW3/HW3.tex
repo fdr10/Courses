@@ -1,6 +1,8 @@
 \documentclass{report}
 \usepackage{blindtext}
 \usepackage[utf8]{inputenc}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 \usepackage{titlesec}
 \usepackage{mathtools}
 \newcommand{\me}[1]{
@@ -8,7 +10,7 @@
 #1
 \end{math}
 }
-\title{Home Work 1}
+\title{Home Work 3}
 \author{Francisco J. Díaz Riollano \\ Student ID: 802-15-2172 }
 
 
@@ -16,18 +18,28 @@
 
 \maketitle
  %%%%%%%%%%%%%%%%%%% First Question%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{\Large{Question 1.4.1\\ \\}}
- Can you find examples of unions of strings and alphabets that are not string alphabets?\\
- \\
- Let  \me{\Sigma_0 = \{0,1\}} and let  \me{\Sigma_1 = \{00,11\}}. Then \me{\Sigma = \Sigma _0 \cup \Sigma_1 } = \me{\{0,1,00,11\}.} Then \me{\rho(\omega) = (0,0,1,1)} or \me{\rho(\omega) = (0,0,11)} or \me{\rho(\omega) = (00,11)} or \me{\rho(\omega) = (00,1,1)}.
- \\ 
- In this example the string mapping is not well defined, therefore \me{\Sigma_0 \cup \Sigma_1} is not a \textit{string alphabet}
- \\ \\ \\
- Another example would be: \\
- Let \me{\Sigma_2 = \{a,b\}} and let \me{\Sigma_3 = \{baa\}} \\
- Let \me{\Sigma = \Sigma_2 \cup \Sigma_3} = \me{\{a,b,baa\}}\\
- Let \me{\omega = baa} which is a string of the alleged alphabet.
- Then \me{\rho(\omega) = (b,a,a)} or  \me{\rho(\omega) = (baa)}. Thus, this other example is not a \textit{string alphabet}.
+\paragraph{\Large{Question 1\\ \\}}
+
+
+\begin{algorithm}
+  \begin{algorithmic}[1]
+    \Procedure{NAIVE}{\textit{On input} S[1,..m]}
+      \State $n\gets |T|$
+      \State $m\gets |S|$
+      \For{s=0 \textbf{to} n-m}
+      \If{P[1,..m] = T[s+1...s+m]}
+      	\State \textbf{print}\textit{("pattern found")}
+      \EndIf
+      \EndFor     
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+
+The string matching problem is defined as: "Given a text \me{T=T_1 ... T_n} which is stored as array \me{T= T[1,...,n]} , and a pattern \me{P = P_1 ... P_m = P[1...m]} with \me{m<n}, where both are strings over the same alphabet \me{\Sigma};decide whether S is a substring of T.
+
+Algorithm 1 is the so-called naive-pattern finding algorithm. Use Algorithm 1 to construct a Finite State Automata(deterministic or non-deterministic) for solving the matching problem.
+
  %%%%%%%%%%%%%%%%%%% First Question%%%%%%%%%%%%%%%%%%%%%%%%
  
  
@@ -36,25 +48,7 @@
  
 \paragraph{\Large{Question 1.4.2\\ \\}}
 Alice said that any finite union of string of the same length is a string alphabet. Is Alice right?
-\\ \\
-Proof: \\\\
-Let P(x) =: "x is a string alphabet"\\
-Let \me{\Sigma_0 = \{ a1,a2,\dots,ak\}} and let  \me{\Sigma_1 = \{ b1,b2,\dots,bn\}} 
-\\ \\
-Let \me{\Sigma = \{ \omega \mid (\omega = \Sigma_0 \cup \Sigma_1) \land ((\forall a \in \Sigma_0)(\forall b \in \Sigma_1 )|a| = |b|) \}}
-\\ 
-\\
-\me{(\forall \omega \in \Sigma)P(\omega)}
-\\ 
-\\
-\\
-\me{(\forall \omega_0 \in \Sigma_0)(\forall \omega_1 \in \Sigma_1)} \me{ \omega_0 \notin \Sigma \iff (\omega_0 = \omega1) \land (\omega_1 \in \Sigma)}, by property of sets. Thus \me{\omega \in \Sigma} is unique and of the same length. Since every element in \me{\Sigma},when given a tuple \me{\rho(\omega ^*)} = T, then \me{(\forall t \in T)} will have a single mapping to the \textit{string alphabet}\me{\Sigma}.
-\\
-\\
-\begin{flushright}
-Q.E.D
-\end{flushright}
-
+\
  %%%%%%%%%%%%%%%%%%% Second Question%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
