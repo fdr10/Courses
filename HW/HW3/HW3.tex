@@ -5,6 +5,8 @@
 \usepackage[noend]{algpseudocode}
 \usepackage{titlesec}
 \usepackage{mathtools}
+\usepackage{tikz} %% Package for drawing finite state machines in LaTEX
+\usetikzlibrary{automata, positioning,arrows}
 \newcommand{\me}[1]{
 \begin{math}
 #1
@@ -36,19 +38,73 @@
 \end{algorithm}
 
 
-The string matching problem is defined as: "Given a text \me{T=T_1 ... T_n} which is stored as array \me{T= T[1,...,n]} , and a pattern \me{P = P_1 ... P_m = P[1...m]} with \me{m<n}, where both are strings over the same alphabet \me{\Sigma};decide whether S is a substring of T.
+The string matching problem is defined as: "Given a text \me{T=T_1 ... T_n} which is stored as array \me{T= T[1,...,n]} , and a pattern \me{P = P_1 ... P_m = P[1...m]} with \me{m<n}, where both are strings over the same alphabet \me{\Sigma;}decide whether S is a substring of T.
 
-Algorithm 1 is the so-called naive-pattern finding algorithm. Use Algorithm 1 to construct a Finite State Automata(deterministic or non-deterministic) for solving the matching problem.
+Algorithm 1 is the so-called naive-pattern finding algorithm. Use Algorithm 1 to construct a Finite State. Automata(deterministic or non-deterministic) for solving the matching problem.
+\newline
 
+% %%%%%%%%%%%%%%%%Automata Describing the algorithm %%%%%%%%%%%%%%
+\begin{tikzpicture}[->,>=stealth] 
+
+\node [state,initial] (q0){$q_0$};
+\node[state,right = 2cm of q0](q1){$q_1$};
+\node[state,right = 2cm of q1](q2){$q_2$};
+\node[state,accepting, right = 2cm of q2](qm){$q_m$};
+
+\path (q0) edge [above] node {$P_1$} (q1);
+\path(q1) edge [above] node {$P_2$}(q2);
+\path(q2) edge [dotted,above,thick] node {$P_m$}(qm);
+
+
+\path (q1) edge[bend left, above]  node {$ \neg P_1$} (q0);
+\path (q2) edge[bend left, above]  node {$ \neg P_2$} (q0);
+\path (qm) edge[bend left, below]  node {$ \neg P_m$} (q0);
+
+
+%\node[state,accepting](qm){$q_m$};
+\end{tikzpicture}
  %%%%%%%%%%%%%%%%%%% First Question%%%%%%%%%%%%%%%%%%%%%%%%
  
  
  
  %%%%%%%%%%%%%%%%%%% Second Question%%%%%%%%%%%%%%%%%%%%%%%
  
-\paragraph{\Large{Question 1.4.2\\ \\}}
-Alice said that any finite union of string of the same length is a string alphabet. Is Alice right?
-\
+\paragraph{\Large{Question 2\\ \\}}
+Algorithm 1 returns a result in the time proportional to \me{O(|T| |S|)}. Discuss the computation time of your automaton.
+\\ In the worst case the automata will have \me{O(|T| |S|)} complexity. We know this because it iterates through the whole text of size \me{|T|} and for each of those iterations it compares at \me{|S|}, which is the size of the string, individual items. Thus the automata has the same time complexity as the algorithm. 
+\newline
+\begin{tikzpicture}[->,>=stealth] 
+%
+\node [state,initial] (q_0){$q_0$};
+\node[state, right = 2cm of q_0](q1){$q_1$};
+\draw [dotted, thick]  (2.5,-0.5) -- (0.5,-2.5);
+\path (q_0) edge  [above] node {$P_1 =T_{s+1}$ } (q1);
+\draw [dotted,thick] (3.5,0) --(5.2,0);
+\node[state,accepting, right = 2cm of q1](qm){$q_m$};
+\draw [dotted,thick] (5.4,0) -- (0.5,-2.5);
+
+
+%
+
+\node [state,below = 2cm of q_0] (q0){$q_0$};
+\path (q_0) edge [left]  node {$P_1 \neq  T_{s+1}$}(q0);
+\node [state,below  = 2cm of q1] (q1){$q_1$};
+\draw [dotted, thick]  (3.5,-3) -- (5,-3);
+\path (q0) edge [above] node {$P_1 =  T_{s+2}$}(q1);
+\node[state,accepting, right = 2cm of q1](qm){$q_m$};
+\draw [dotted, thick]  (0,-3.5) -- (0,-5.2);
+%
+%
+%
+
+\node [state,below = 2cm of q0] (q0){$q_0$};
+\node [state,below = 2cm of q1] (q1){$q_1$};
+\path (q0) edge [above] node {$P_1 =  T_{n-m +1}$}(q1);
+\draw [dotted, thick]  (3.5,-5.75) -- (5,-5.75);
+\node [state,accepting,below = 2cm of qm] (q_m){$q_m$};
+\end{tikzpicture}
+
+
  %%%%%%%%%%%%%%%%%%% Second Question%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
