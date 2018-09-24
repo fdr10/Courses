@@ -47,18 +47,19 @@ Algorithm 1 is the so-called naive-pattern finding algorithm. Use Algorithm 1 to
 \begin{tikzpicture}[->,>=stealth] 
 
 \node [state,initial] (q0){$q_0$};
-\node[state,right = 2cm of q0](q1){$q_1$};
-\node[state,right = 2cm of q1](q2){$q_2$};
-\node[state,accepting, right = 2cm of q2](qm){$q_m$};
+\node[state,right = 3cm of q0](q1){$q_1$};
+\node[state,right = 3cm of q1](q2){$q_2$};
+\node[state,accepting, right = 3cm of q2](qm){$q_m$};
 
 \path (q0) edge [above] node {$P_1$} (q1);
 \path(q1) edge [above] node {$P_2$}(q2);
 \path(q2) edge [dotted,above,thick] node {$P_m$}(qm);
 
 
-\path (q1) edge[bend left, above]  node {$ \neg P_1$} (q0);
-\path (q2) edge[bend left, above]  node {$ \neg P_2$} (q0);
-\path (qm) edge[bend left, below]  node {$ \neg P_m$} (q0);
+\path (q1) edge[bend left, above]  node {$ P_2,P_3,...P_m$} (q0);
+
+\path (q2) edge[bend left, above]  node {$ P_1,P_3,...,P_m$} (q0);
+\path (qm) edge[bend left, below]  node {$P_1,P_2,...,P_{m-1}$} (q0);
 
 
 %\node[state,accepting](qm){$q_m$};
