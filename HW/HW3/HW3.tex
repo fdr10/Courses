@@ -40,8 +40,17 @@
 
 The string matching problem is defined as: "Given a text \me{T=T_1 ... T_n} which is stored as array \me{T= T[1,...,n]} , and a pattern \me{P = P_1 ... P_m = P[1...m]} with \me{m<n}, where both are strings over the same alphabet \me{\Sigma;}decide whether S is a substring of T.
 
-Algorithm 1 is the so-called naive-pattern finding algorithm. Use Algorithm 1 to construct a Finite State. Automata(deterministic or non-deterministic) for solving the matching problem.
-\newline
+Algorithm 1 is the so-called naive-pattern finding algorithm. Use Algorithm 1 to construct a Finite State. Automata(deterministic or non-deterministic) for solving the matching problem. 
+\\
+
+Let M \me{=(Q,\Sigma,\delta,q_0,F)} be 5-tuple NFSA where: \newline
+Q is a finite set of states \newline
+\me{\Sigma} is a finite set if input symbols \newline
+\me{\delta} is a state transition function from \me{Q \times \Sigma \rightarrow Q} \newline
+\me{q_0 \in Q} is the initial state \newline
+\me{F \subseteq Q} Q is the set of final states \newline
+Let \me{A=\{s_1,s_2,...,s_{|A|}\}} and \me{\bar{p} = A -p} 
+
 
 % %%%%%%%%%%%%%%%%Automata Describing the algorithm %%%%%%%%%%%%%%
 \begin{tikzpicture}[->,>=stealth] 
@@ -50,16 +59,23 @@ Algorithm 1 is the so-called naive-pattern finding algorithm. Use Algorithm 1 to
 \node[state,right = 3cm of q0](q1){$q_1$};
 \node[state,right = 3cm of q1](q2){$q_2$};
 \node[state,accepting, right = 3cm of q2](qm){$q_m$};
+\node[state, below = 1cm of qm](qrej){$q_{reject}$};
 
 \path (q0) edge [above] node {$P_1$} (q1);
 \path(q1) edge [above] node {$P_2$}(q2);
 \path(q2) edge [dotted,above,thick] node {$P_m$}(qm);
 
+\path (q0) edge[bend right, below]  node {$ \bar{P_1}$} (qrej);
+\path (q1) edge[bend right, below]  node {$\bar{P_2}$} (qrej);
+\path (q2) edge[bend right, below]  node {$ \bar{P_m}$} (qrej);
 
-\path (q1) edge[bend left, above]  node {$ P_2,P_3,...P_m$} (q0);
+%loop
+\path (qrej) edge[loop below] node{$\Sigma$}(qrej);
 
-\path (q2) edge[bend left, above]  node {$ P_1,P_3,...,P_m$} (q0);
-\path (qm) edge[bend left, below]  node {$P_1,P_2,...,P_{m-1}$} (q0);
+%\path (q1) edge[bend left, above]  node {$ P_2,P_3,...P_m$} (q0);
+
+%\path (q2) edge[bend left, above]  node {$ P_1,P_3,...,P_m$} (q0);
+%\path (qm) edge[bend left, below]  node {$P_1,P_2,...,P_{m-1}$} (q0);
 
 
 %\node[state,accepting](qm){$q_m$};
