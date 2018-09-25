@@ -49,13 +49,16 @@ Q is a finite set of states \newline
 \me{\delta} is a state transition function from \me{Q \times \Sigma \rightarrow Q} \newline
 \me{q_0 \in Q} is the initial state \newline
 \me{F \subseteq Q} Q is the set of final states \newline
-Let \me{A=\{s_1,s_2,...,s_{|A|}\}} and \me{\bar{p} = A -p} 
-
+Let \me{A=\{s_1,s_2,...,s_{|A|}\}} and \me{\bar{p} = A -p}.
+\\
+\\
+High Level Description of the automata: \\
+M =: "On input S[1,...,m]"
 
 % %%%%%%%%%%%%%%%%Automata Describing the algorithm %%%%%%%%%%%%%%
 \begin{tikzpicture}[->,>=stealth] 
 
-\node [state,initial] (q0){$q_0$};
+\node [state,initial] (q0){$q_r$};
 \node[state,right = 3cm of q0](q1){$q_1$};
 \node[state,right = 3cm of q1](q2){$q_2$};
 \node[state,accepting, right = 3cm of q2](qm){$q_m$};
@@ -70,7 +73,7 @@ Let \me{A=\{s_1,s_2,...,s_{|A|}\}} and \me{\bar{p} = A -p}
 \path (q2) edge[bend right, below]  node {$ \bar{P_m}$} (qrej);
 
 %loop
-\path (qrej) edge[loop below] node{$\Sigma$}(qrej);
+\path (qrej) edge[loop below] node{$s_1,s_2,s_3,...,s_{|A|}$}(qrej);
 
 %\path (q1) edge[bend left, above]  node {$ P_2,P_3,...P_m$} (q0);
 
@@ -91,34 +94,66 @@ Algorithm 1 returns a result in the time proportional to \me{O(|T| |S|)}. Discus
 \\ In the worst case the automata will have \me{O(|T| |S|)} complexity. We know this because it iterates through the whole text of size \me{|T|} and for each of those iterations it compares at \me{|S|}, which is the size of the string, individual items. Thus the automata has the same time complexity as the algorithm. 
 \newline
 \begin{tikzpicture}[->,>=stealth] 
-%
-\node [state,initial] (q_0){$q_0$};
-\node[state, right = 2cm of q_0](q1){$q_1$};
-\draw [dotted, thick]  (2.5,-0.5) -- (0.5,-2.5);
-\path (q_0) edge  [above] node {$P_1 =T_{s+1}$ } (q1);
-\draw [dotted,thick] (3.5,0) --(5.2,0);
-\node[state,accepting, right = 2cm of q1](qm){$q_m$};
-\draw [dotted,thick] (5.4,0) -- (0.5,-2.5);
 
 
-%
 
-\node [state,below = 2cm of q_0] (q0){$q_0$};
-\path (q_0) edge [left]  node {$P_1 \neq  T_{s+1}$}(q0);
-\node [state,below  = 2cm of q1] (q1){$q_1$};
-\draw [dotted, thick]  (3.5,-3) -- (5,-3);
-\path (q0) edge [above] node {$P_1 =  T_{s+2}$}(q1);
-\node[state,accepting, right = 2cm of q1](qm){$q_m$};
-\draw [dotted, thick]  (0,-3.5) -- (0,-5.2);
-%
-%
-%
 
-\node [state,below = 2cm of q0] (q0){$q_0$};
-\node [state,below = 2cm of q1] (q1){$q_1$};
-\path (q0) edge [above] node {$P_1 =  T_{n-m +1}$}(q1);
-\draw [dotted, thick]  (3.5,-5.75) -- (5,-5.75);
-\node [state,accepting,below = 2cm of qm] (q_m){$q_m$};
+\node[state,below =3cm of q0](T1) {$T_1$};
+
+\node[state,accepting, right =1cm of T1](Acc) {$$};
+\path (T1) edge[above] node{$\epsilon$}(Acc);
+
+
+\node[state,right =3cm of T1](T2){$T_1$};
+
+\node[state,accepting, right =1cm of T2](Acc) {$$};
+\node [state,above=3cm of Acc](q0) {$$};
+\path (T2) edge[above] node{$\epsilon$}(Acc);
+\path(q0) edge [above] node {$P_1$}(T1);
+\path(q0) edge [left] node {$P_2$}(T2);
+
+
+
+
+
+\node[state,right =5cm of T2](Tn){$T_1$};
+\path(q0) edge [left] node {$P_m$}(Tn);
+\path (Acc) edge[above,dotted,thick] node{$$}(Tn);
+\node[state,accepting, right =1cm of Tn](Acc) {$$};
+\path (Tn) edge[above] node{$\epsilon$}(Acc);
+
+
+\node[state, below =1.5cm of T1](2){$T_2$};
+\node[state, left =0.5cm of 2](1){$T_2$};
+\node[state, right =0.5cm of 2](3){$T_2$};
+\path(T1) edge [left,dotted,thick] node{$T_1$}(1);
+\path(T1) edge [left] node{$P_2$}(2);
+\path(T1) edge [left,dotted,thick] node{$...$}(3);
+
+\node[state, below =1.5cm of T2](2'){$T_2$};
+\node[state, left =0.5cm of 2'](1){$T_2$};
+\node[state, right =0.5cm of 2'](3){$T_2$};
+\path(T2) edge [left,dotted,thick] node{$P_1$}(1);
+\path(T2) edge [left,dotted,thick] node{$P_2$}(2');
+\path(T2) edge [left,dotted,thick] node{$...$}(3);
+
+
+
+\node[state, below =1.5cm of Tn](2'){$T_2$};
+\node[state, left =0.5cm of 2'](1){$T_2$};
+\node[state, right =0.5cm of 2'](3){$T_2$};
+\path(Tn) edge [left,dotted,thick] node{$P_1$}(1);
+\path(Tn) edge [left,dotted,thick] node{$P_2$}(2');
+\path(Tn) edge [left,dotted,thick] node{$...$}(3);
+
+
+
+\node[state,below = 3 cm of 2](f){$T_n$};
+\path(2) edge[left,dotted,thick] node{$P_m$}(f);
+\node[state,accepting,right = 1.5cm of f] (final){$$};
+\path(f) edge[above] node{$\epsilon$}(final);
+
+
 \end{tikzpicture}
 
 
