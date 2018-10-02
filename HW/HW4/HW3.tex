@@ -87,52 +87,54 @@ Give the diagram of the non-deterministic finite state machine above, we can fin
   \newpage
  \begin{table}[h!]
 \centering
-\begin{tabular}{||c c c c||} 
+\begin{tabular}{||c c c ||} 
  \hline
- \me{\delta} & 0 & 1 & \me{\varepsilon} \\ [0.5ex] 
+ \me{\delta} & 0 & 1  \\ [0.5ex] 
  \hline\hline
- \me{\emptyset} & \me{\emptyset}      & \me{\emptyset}    & \me{\emptyset}  \\ 
- \me{\{a\}} & \me{\phi}  & \me{\{a,d\}} & \me{\emptyset}  \\
- \me{\{b\}}& \me{\{c,b\}}  & \me{\{b\}}         & \me{\{b\}}  \\
- \me{\{c\}} & \me{\{b,c\}}  & \me{\{d\}}      & \me{\{e\}}  \\
- \me{\{d\}} & \me{\{a\}}   & \me{\phi}          & \me{\phi}  \\ 
- \me{\{e\}} & \me{\{c\}}      & \me{\{b\}}    & \me{\phi}  \\ 
- \me{\{a,b\}} & \me{\phi}  & \me{\{a,d\}} & \me{\phi}  \\
- \me{\{a,c\}} & \me{\phi}  & \me{\{d\}}         & \me{\{b\}}  \\
- \me{\{a,d\}} & \me{\{b,c\}}  & \me{\{d\}}      & \me{\{e\}}  \\
- \me{\{a,e\}} & \me{\{a\}}   & \me{\phi}          & \me{\phi}  \\ 
+ \me{\emptyset} & \me{\emptyset}   &\me{\emptyset}      \\ 
+ \me{\{a\}} & \me{\phi}  & \me{\{a,d\}}   \\
+ \me{\{b\}}& \me{\{c,b\}}  & \me{\{b\}}       \\
+ \me{\{c\}} & \me{\emptyset}  & \me{\{a,d,e\}}   \\
+ \me{\{d\}} & \me{\{b,c\}}   & \me{\{d,e\}}          \\ 
+ \me{\{e\}} & \me{\{a\}}      & \me{\emptyset}    \\ 
+ \me{\{a,b\}} & \me{\{c,e\}}  & \me{\{a,b,d,e\}}   \\
+ \me{\{a,c\}} & \me{\{b,c\}}  & \me{\{b,d,e\}}           \\
+ \me{\{a,d\}} & \me{\{b,c,e\}}  & \me{\{b,d,e\}}        \\
+ \me{\{a,e\}} & \me{\{a,b,c\}}   & \me{\{b\}}          \\ 
  
  
- \me{\{b,c\}} & \me{\{c\}}      & \me{\{b\}}    & \me{\phi}  \\ 
- \me{\{b,d\}} & \me{\phi}  & \me{\{a,d\}} & \me{\phi}  \\
- \me{\{b,e\}} & \me{\phi}  & \me{\{d\}}         & \me{\{b\}}  \\
- \me{\{c,d\}}& \me{\{b,c\}}  & \me{\{d\}}      & \me{\{e\}}  \\
- \me{\{c,e\}} & \me{\{a\}}   & \me{\phi}          & \me{\phi}  \\
- \me{\{d,e\}} & \me{\{b,c\}}  & \me{\{d\}}      & \me{\{e\}}  \\
- \me{\{a,b,c\}}& \me{\{c\}}      & \me{\{b\}}    & \me{\phi}  \\ 
- \me{\{a,b,d\}} & \me{\phi}  & \me{\{a,d\}} & \me{\phi}  \\
- \me{\{a,b,e\}} & \me{\phi}  & \me{\{d\}}         & \me{\{b\}}  \\
-  \me{\{a,c,d\}} & \me{\{b,c\}}  & \me{\{d\}}      & \me{\{e\}}  \\
-   \me{\{a,c,e\}}& \me{\{a\}}   & \me{\phi}          & \me{\phi}  \\
-   \me{\{a,d,e\}} & \me{\phi}  & \me{\{a,d\}} & \me{\phi}  \\
-  \me{\{b,c,d\}} & \me{\{b,c\}}  & \me{\{d\}}      & \me{\{e\}}  \\
- \me{\{b,c,e\}}& \me{\{a\}}   & \me{\phi}          & \me{\phi}  \\
-  \me{\{b,d,e\}}& \me{\{a\}}   & \me{\phi}          & \me{\phi}  \\
+ \me{\{b,c\}} & \me{\emptyset}      & \me{\{a,b,d,e\}}      \\ 
+ \me{\{b,d\}} & \me{\{b,c,e\}}  & \me{\{a,d,e\}}   \\
+ \me{\{b,e\}} & \me{\{a\}}  & \me{\{a,d,e\}}         \\
+ \me{\{c,d\}}& \me{\{b,c,e\}}  & \me{\{d,e\}}       \\
+ \me{\{c,e\}} & \me{\{a,b\}}   & \me{\{d,e\}}          \\
+ \me{\{d,e\}} & \me{\{a,b,c\}}  & \me{\{d,e\}}        \\
+ \me{\{a,b,c\}}& \me{\{b,c\}}      & \me{\{a,b,d,e\}}     \\ 
+ \me{\{a,b,d\}} & \me{\{b,c\}}  & \me{\{a,b,d,e\}}   \\
+ \me{\{a,b,e\}} & \me{\{a,b,c\}}  & \me{\{a,b,d,e\}}          \\
+  \me{\{a,c,d\}} & \me{\{b,c,e\}}  & \me{\{d,e\}}       \\
+   \me{\{a,c,e\}}& \me{\{a,b,c\}}   & \me{\{b,d,e\}}         \\
+   \me{\{a,d,e\}} & \me{\{a,b,c\}}  & \me{\{b,d,e\}}  \\
+  \me{\{b,c,d\}} & \me{\{b,c,e\}}  & \me{\{b,d,e\}}      \\
+ \me{\{b,c,e\}}& \me{\{a\}}   & \me{\{a,d,e\}}       \\
+  \me{\{b,d,e\}}& \me{\{a,b,c,e\}}   & \me{\{a,d,e\}}    \\
 
- \me{\{c,d,e\}}& \me{\{c\}}      & \me{\{b\}}    & \me{\phi}  \\ 
- \me{\{a,b,c,d\}}& \me{\phi}  & \me{\{a,d\}} & \me{\phi}  \\
- \me{\{a,b,c,e\}} & \me{\phi}  & \me{\{d\}}         & \me{\{b\}}  \\
-   \me{\{a,b,d,e\}} & \me{\{b,c\}}  & \me{\{d\}}      & \me{\{e\}}  \\
-     \me{\{a,c,d,e\}}& \me{\{a\}}   & \me{\phi}          & \me{\phi}  \\
-  \me{\{b,c,d,e\}} & \me{\{c\}}      & \me{\{b\}}    & \me{\phi}  \\ 
-   \me{\{a,b,c,d,e\}} & \me{\phi}  & \me{\{d\}}         & \me{\{b\}}  \\[1ex] 
+ \me{\{c,d,e\}}& \me{\{a,b,c,\}}      & \me{\{b,d,e\}}   \\ 
+ \me{\{a,b,c,d\}}& \me{\{a,b,c,e\}}  & \me{\{a,b,d,e\}}   \\
+ \me{\{a,b,c,e\}} & \me{\{a,b,c\}}  & \me{\{a,b,c,d,e\}}      \\
+   \me{\{a,b,d,e\}} & \me{\{a,b,c,e\}}  & \me{\{a,b,d,e\}}    \\
+     \me{\{a,c,d,e\}}& \me{\{a,b,c\}}   & \me{\{a,b,d,e\}}      \\
+  \me{\{b,c,d,e\}} & \me{\{a,b,c\}}      & \me{\{a,d,e\}}    \\ 
+   \me{\{a,b,c,d,e\}} & \me{\{a,b,c,e\}}  & \me{\{a,b,d,e\}}     \\[1ex] 
  \hline
 \end{tabular}
 \caption{}
 \label{table:2}
 \end{table}
 
-  \item 
+  \item \me{a' = \{a\}}
+  \item \me{F=\{\{e\},\{a,e\},\{b,e\},\{c,e\},\{d,e\},\{a,b,e\},\{b,c,e\},\{c,d,e\},\{a,b,c,e\},\{b,c,d,e\},\{a,b,c,d,e\}\}}
+  
 \end{enumerate}
 
  %%%%%%%%%%%%%%%%%%% First Question%%%%%%%%%%%%%%%%%%%%%%%%
