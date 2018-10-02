@@ -136,19 +136,18 @@ Give the diagram of the non-deterministic finite state machine above, we can fin
   \item \me{F=\{\{e\},\{a,e\},\{b,e\},\{c,e\},\{d,e\},\{a,b,e\},\{b,c,e\},\{c,d,e\},\{a,b,c,e\},\{b,c,d,e\},\{a,b,c,d,e\}\}}
   
 \end{enumerate}
-
  %%%%%%%%%%%%%%%%%%% First Question%%%%%%%%%%%%%%%%%%%%%%%%
  
  
  
  %%%%%%%%%%%%%%%%%%% Second Question%%%%%%%%%%%%%%%%%%%%%%%
- 
+ \newpage
 \paragraph{\Large{Question 2\\ \\}}
-Find a proof of the pumping lemma for regular languages based exclusively on regular expressions \textbf{do not use automata}. The first sentence in your proof should be: \textit{Since L is regular, there is a regular expression R representing L}. \\
-
+Find a proof of the pumping lemma for regular languages based exclusively on regular expressions \textbf{do not use automata}. The first sentence in your proof should be: \textit{Since L is regular, there is a regular expression R representing L}. \\ \\
+Proof:
 
 The pumping lemma states the follwing: \\
-If \me{L} is a regular language, then there is a number p such that if r is any string of \me{L} and has length of at least \me{p}, then  \me{R=xyx} and \me{R} is said to satisfy the following conditions:
+If \me{L} is a regular language, then there is a number \me{p} such that if \me{r} is any string of \me{L} and has length of at least \me{p}, then  \me{R=xyx} and \me{R} is said to satisfy the following conditions:
 \begin{enumerate}
   \item for each \me{i \geq 0, xy^i z \in L} 
   \item \me{|y| > 0}
@@ -158,11 +157,13 @@ If \me{L} is a regular language, then there is a number p such that if r is any 
 
 Since \me{L} is regular, there is a regular expression \me{R} representing \me{L}. We first consider the case, where \me{R} is not of the length of at least \me{p}. In this case, the pumping lemma would be trivial(true), since the regular expression representing \me{L} meets all of the three conditions. 
 \\ \\
- The more interesting case would be when \me{R} is of the length of at least \me{p.} Our assumption is that \me{R} is a regular expression and it can be expressed as \me{R = xyz}. We define \me{p} as the number of nodes of the parsed regular expression in conjunctive normal form of the expression. Since R is a regular expression, we can use the operations defined for regular expressions and ensure the pumping lemma can be met using these operations. Let \me{R = r_1r_2...r_n}, such that \me{|R| = n} and \me{n \geq p}.if we were to expand the parse tree for the string we see there are\me{n+1} concatenation operations or union operations in conjunctive normal (the +1 is due to the root of the tree). Given the above, it means there is at least \me{p+1} operations for the parsing of the regular expression, this is done so to satisfy the bound condition. Among the first \me{p+1} operations, there will be one operation, or node in the parsing  tree, that will contain the same symbol, this is due to the pigeon hole principle. Let us call the first instance of this node in the parsing tree \me{r_j} and the  second \me{r_l.} Given that \me{r_l} node occurs among the first nodes, we have \me{l \leq p+1}. \\
+ The more interesting case would be when \me{R} is of the length of at least \me{p.} Our assumption is that \me{R} is a regular expression and it can be expressed as \me{R = xyz}. We define \me{p} as the number of nodes of the parsed regular expression in conjunctive normal form of the expression. Since R is a regular expression, we can use the operations defined for regular expressions and ensure the pumping lemma can be met using these operations. Let \me{R = r_1r_2...r_n}, such that \me{|R| = n} and \me{n \geq p}.if we were to expand the parse tree for the string we see there are\me{n+1} concatenation operations or union operations in conjunctive normal (the +1 is due to the root of the tree). Given the above, it means there is at least \me{p+1} operations for the parsing of the regular expression, this is done so to satisfy the bound condition. Among the first \me{p+1} operations, there will be one operation, or node in the parsing  tree, that will contain the same symbol, this is due to the pigeon hole principle. Let us call the first instance of this node in the parsing tree \me{r_j} and the  second \me{r_l.} Given that \me{r_l} node occurs among the nodes closest to the leafs nodes, we have \me{l \leq p+1}. \\
  
- Now we let \me{R =xyz}, such that \me{x=s_1...s_{j-1}} , \me{y=s_j...s_{l-1}} and \me{z=s_l ...s_n.} This is done so\me{ x} takes the part of \me{r_1} to \me{r_j} of the parsing tree, \me{y} takes \me{r_j} and \me{z} belongs to \me{r_j} to \me{r_{n+1}}  of the parsing tree of the regular expression. The regular expression defines \me{R=xy^iz} has the same parsing for \me{i \geq 0}. Condition 1 is met. We know \me{j \neq l}, so \me{|y| > 0}. Condition 2 is met. We also know that \me{l \leq p+1}, so \me{|xy| \leq p}. Thus we have satisfied all conditions of the pumping lemma.
+ Now we let \me{R =xyz}, such that \me{x=s_1...s_{j-1}} , \me{y=s_j...s_{l-1}} and \me{z=s_l ...s_n.} This is done so\me{ x} takes the part of \me{r_1} to \me{r_j} nodes of the parsing tree, \me{y} takes \me{r_j} \me{r_{l-1}}and \me{z} belongs to \me{r_{j+1}} to \me{r_{n+1}}  of the parsing tree of the regular expression. The regular expression defines \me{R=xy^iz} has the same parsing for \me{i \geq 0}. Condition 1 is met. We know \me{j \neq l}, among the first \me{p+1} nodes in the parsing must contain the same node symbol, so \me{|y| > 0}. Condition 2 is met. We also know that \me{l \leq p+1}, so \me{|xy| \leq p}. Thus we have satisfied all conditions of the pumping lemma.  \\ \\
+ 
+ We have proved that if a language is regular, thus having a regular expression representing such a language, it must therefore satisfy the pumping lemma. 
 \ \ \\
-For the first condition,  (for each \me{i \geq 0, xy^iz \in L}), we can concatenate a symbol 
+
 	
 
 
