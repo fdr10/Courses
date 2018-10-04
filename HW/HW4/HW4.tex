@@ -75,10 +75,9 @@ The NFSA for N can see as the following: \\
 %\path (q0) edge [above,loop] node{$1,2$}(q0);
 \end{tikzpicture}
 
-Give the diagram of the non-deterministic finite state machine above, we can find the language that such a machine accepts. Namely \me{L(M) = L. } For the machine above the  regular expression representing the language \me{L} is:\\ \newline
+Give the diagram of the non-deterministic finite state machine above, we can find the language that such a machine accepts. Namely \me{L(M) = L. } For the machine above all the  strings that can me made with this regular expression \me{R}  represent the language \me{L}:\\ \newline
 
-Let \me{\lambda = [(11^*1)  + (01) + (01(01)^*)] (1^* +\varepsilon)} 
-Finally and given the definition of $\lambda$ above, the regular expression for the NFSA is \me{\lambda(0\lambda)^*\varepsilon} \\ \\The set of all strings that can be formed from the given regular expression, represents the language accepted by the NFSA. \\ \\ \\
+\me{R = 01(0100^*0 \cup [01(01)^*(0\cup1)]} \\ \\ 
 
 (b) a deterministic automaton that is equivalent to N.
 
