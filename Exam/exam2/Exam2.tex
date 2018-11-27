@@ -38,18 +38,18 @@ Turing Machine, \me{TM =(Q,\Sigma, \Gamma, \delta, q_0,q_{accept}, q_{reject}). 
 1) Q is the set of states \\
 2)\me{\Sigma} is the input alphabet not containing the blank symbol. \\
 3) \me{\Gamma} is the stack alphabet \\
-4) \me{\delta: Q \times \Sigma_{\varepsilon} \times \Gamma_{\varepsilon R} \times \Gamma_{\varepsilon L}  \to } $\mathcal{P}(Q \times \Gamma_{\varepsilon L}\times\Gamma_{\varepsilon R})$, where $\Gamma_{\varepsilon L} $ is the the left stack with    $\varepsilon$ and $\Gamma_{\varepsilon R}$ is the right stack with $\varepsilon$ \\
+4) \me{\delta: Q \times \Sigma_{\varepsilon} \times \Gamma_{\varepsilon R} \times \Gamma_{\varepsilon L}  \to } $(Q \times \Gamma_{\varepsilon L}\times\Gamma_{\varepsilon R})$, where $\Gamma_{\varepsilon L} $ is the the left stack with    $\varepsilon$ and $\Gamma_{\varepsilon R}$ is the right stack with $\varepsilon$ \\
 5) $q_0 \in Q$ is the start state\\
 6) $F \subseteq Q$ is the set of accept states. \\ \\ 
 
 
-The idea is to show that the transition function in a TM; \me{\delta: Q \times \Gamma \to Q \times \Gamma \times  \{L,R\}} is equivalent to the transition function of a 2-Stack Pushdown Automata; \me{\delta: Q \times \Sigma_{\varepsilon} \times \Gamma_{\varepsilon R} \times \Gamma_{\varepsilon L}  \to } $\mathcal{P}(Q \times \Gamma_{\varepsilon L}\times \Gamma_{\varepsilon R})$. \\
+The idea is to show that the transition function in a TM; \me{\delta: Q \times \Gamma \to Q \times \Gamma \times  \{L,R\}} is equivalent to the transition function of a 2-Stack Pushdown Automata; \me{\delta: Q \times \Sigma_{\varepsilon} \times \Gamma_{\varepsilon R} \times \Gamma_{\varepsilon L}  \to } $Q \times \Gamma_{\varepsilon L}\times \Gamma_{\varepsilon R}$. \\
 
 We define the transition function of the pushdown automata on which the movement to the left of the TM, say \me{\delta(q_1,0) = (q_2,\times,L)} for example, to be equivalent to pushing to the right stack \me{\Gamma_{\varepsilon R} } and popping on the left stack stack \me{\Gamma_{\varepsilon R} }. Vice versa, moving to the right in the TM would be equivalent to pushing the symbol it read to the left stack and performing a pop from the right stack.  Since a turing machine cannot read an empty string from the tape alphabet it does however, have $\sqcup$. Thus operations involving $\sqcup$ in the TM would be equivalent to operations involving $\varepsilon$ on the 2-Stack Pushdown Automata. \\ \\
 As for the starting, accepting, rejecting states. \\ \\
 In the 2-Stack Push Down Automata $q_0$ would be the same as $q_0 $ in the TM. \\
 $F$, the subset of accepting states in the 2-Stack Pushdown Automata, must contain $q_{accept}$ state of the TM.\\ \\
-For the rejecting state $q_{reject}$ of the TM must be a state in $Q - F$ of the 2-Stack Push Down Automata in order to equivalent.
+For the rejecting state $q_{reject}$ of the TM must be a state in $Q - F$ of the 2-Stack Push Down Automata in order to be equivalent.
  %%%%%%%%%%%%%%%%%%% First Question%%%%%%%%%%%%%%%%%%%%%%%%
  
  
@@ -58,10 +58,10 @@ For the rejecting state $q_{reject}$ of the TM must be a state in $Q - F$ of the
  \newpage
 \paragraph{\Large{Question 2\\ \\}}
 2. (a) (10 points) Define formally the concepts of decidable language and Turing-recognizable language, and show that a decidable language is Turing-recognizable but not necessarily the other way around.  \\  \\
-1) Decidable languages:\\  A language $L$ over $\Sigma$ is said to be to be decidable if there exist a Turing Machine T, such that \me{L = L(T) }. Such a language is said to be decidable, if on input $w$, the machine $accepts$ if $x \in L$ and the machine $rejects$ otherwise.  Often such a machine is called a decider of the language $L$.  \\ \\
-2) Turing recognizable language: \\A language $L$ over $\Sigma$ is said to be recognizable 	if there exists a Turing Machine T, \me{L =L(T)} but T is not necessarily a decider. Meaning such a machine may not necessarily tell whether on input $x \in L$ will $accept$ or 
-$reject$. \\ \\3) Proof: \\ We have two directions to prove. The first will consist of proving that if a language is decidable it is also recognizable. The other proof will consist of proving that if a language is recognizable does not necessarily imply the language is decidable. The later could be done by proving the existence of language that is recognizable but is not decidable. \\ \\
-a) We will show this, by proving there exist such a language of a decider, $A_{TM}$, that decides whether a Turing Machine is Turing recognizable. \\ \\
+1) Decidable languages:\\  A language $L$ over $\Sigma$ is said to be to be decidable if there exist a Turing Machine T, such that \me{L = L(T) }. Such a language is said to be decidable, if on input $w$, the machine $accepts$ if $w \in L$ and the machine $rejects$ otherwise.  Often such a machine is called a decider of the language $L$.  \\ \\
+2) Turing recognizable language: \\A language $L$ over $\Sigma$ is said to be recognizable 	if there exists a Turing Machine T, \me{L =L(T)} but T is not necessarily a decider. Meaning such a machine may not necessarily tell whether on input $w \in L$ will $accept$ or 
+$reject$. \\ \\3) Proof that a decidable language is recognizable but not the other way around: \\\\ We have two directions to prove. The first will consist of proving that if a language is decidable it is also recognizable. The other proof will consist of proving that if a language is recognizable does not necessarily imply the language is decidable. The later could be done by proving the existence of language that is recognizable but is not decidable. \\ \\
+a) We will show this, by proving there exist such a language, $A_{TM}$, that decides whether a Turing Machine is Turing recognizable. \\ \\
 $U =$  ``On  input $<M,w>$, where $M$ is a TM and $w$ is a string: \\
 
    \indent 1) Simulate $M$ on $w$.\\
@@ -74,15 +74,14 @@ Suppose $H$ is a decider for $A_{TM}$. Namely \me{H(<M,w>)}, $accepts$ if M acce
 \indent \indent  2. Output the opposite of what H outputs; that is, if H accepts $reject$, \indent \indent  if H accepts $reject$.\\ Now run D on itself. \\ \\
 
 \me{D(<D>)}: $accept$ if D does not accept $<D>$, \\ \indent \indent \indent \indent \indent$reject$ if D accepts $<D>$. \\
-No matter what D does, it is forced to do the opposite, which is a contradiction. Since we have found a language that is recognizable but not decidable we can conclude the statement as true. 
+No matter what D does, it is forced to do the opposite, thus cannot decide, forcibly of course but it proves the point. Thus we have a contradiction. 
 
 \newpage
 
-(b) (30 points)  Let I$NF_A =  \{<A>: A $ A is a finite state automaton and \me{L(A)} is infinite $\} $. Is $INF_A$ decidable? Answer with a demonstration or a counterexample. \\
+(b) (30 points)  Let I$NF_A =  \{<A>: $ A is a finite state automaton and \me{L(A)} is infinite $\} $. Is $INF_A$ decidable? Answer with a demonstration or a counterexample. \\
 
 
-We want prove that given a an Automata, $A$ has an a language $L(A)$, which is infinite. \\ We cannot test all \me{w \in \Sigma^*}. However, we have the pumping lemma to help us. A language that satisfies the pumping lemma of finite state machines is of the form $xy^iz$, where \me{i >0} and \me{p=|y|>0}. If we can find a decider such that decides on languages that have such a string with a least length $p$ then, our language is infinite by the pumping lemma. \\ \\
- Pseudocode:
+We want prove that given  an Automata, $A$ has an a language $L(A)$, which is infinite. \\ We cannot test all \me{w \in \Sigma^*}. However, we have the pumping lemma to help us. A language that satisfies the pumping lemma of finite state machines is of the form $xy^iz$, where \me{i >0} and \me{p=|y|>0}. If we can find a decider such that decides on languages that have such a string with a least length $p$ then, our language is infinite by the pumping lemma. \\ \\
  
  M = On input A \\
   Let $p$ be the number of states in A (the cardinality of the set of states \me{|Q|})
@@ -93,18 +92,44 @@ We want prove that given a an Automata, $A$ has an a language $L(A)$, which is i
   \indent If $M_{DFA}$ accepts\\ 
   \indent \indent $Accept$ \\
   End For Loop \\
-  $Reject$
+  $Reject$ \\
+  
+  If this machine $Accepts$ it means it has found such a $p$ of the pumping lemma, thus $L(A)$ is infinite. $Rejects$ otherwise.
+  
 
 
 
 \newpage
 3. (a) (10 points) Define formally the concept of computable function. \\\\
 \\
-A computable function is a function is one whose values can be computed with a Turing Machine.
-A function \me{f:\Sigma^* \to \Sigma^*} is said to be computable, if there is a Turing Machine M which on input $w \in \Sigma^*$, will halt with $f(w)$ on the machines tape. The machine $w$ may accept or reject $w$. Also computable functions may not be described with a closed formula. This will be left to reduction which may or may not happen. \\ \\
+A computable function is a function whose values can be computed with a Turing Machine. More formally, a function \me{f:\Sigma^* \to \Sigma^*} is said to be computable, if there is a Turing Machine M which on input $w \in \Sigma^*$, will halt with $f(w)$ on the machine's tape. The machine $M$ may accept or reject $w$. Also computable functions may not be described with a closed formula. This will be left to reduction which may or may not happen. \\ \\
 (b) (30 points ) Prove or disprove with a counterexample that the reductions of \\
-\indent (a) $ AT_M$ to $HALT $\\
-\indent (b) $ E_{TM}$ to $EQ_{TM} $ are both computable.
+\indent (a) $ A_{T_M}$ to $HALT $\\ \\ Proof that $A_{TM}$ is reducible to $HALT$. We begin by constructing a function, $f$ that maps from $<M,w>$ to $<M',w'>$. Where $<M,w> \in A_{TM}$ and $<M',w'> \in HALT$. The machine that computes the function f described above is described as \\ \\
+$f$ = On input $<M,w>$ \\
+1. Build a new machine $M'$ \\
+$M'$ = On input $x$ \\
+\indent 1. Run $M$ on $x$ \\
+\indent 2. If $M$ accepts then $accept$\\
+\indent 3. If $M$ rejects then enter a loop\\
+Output: $<M',w'>$  \\
+
+Since we have developed a TM that describes $f$, we can conclude $f$ is a computable function.
+\\ \\ \\
+\indent (b) $ E_{TM}$ to $EQ_{TM} $ are both computable.\\
+Proof that $ E_{TM}$ to $EQ_{TM} $ is reducible and computable: \\ \\
+The reduction is quite simple. Testing emptiness of a Turing Machine will be a special case of testing the equivalence of two Turing Machines. We would be testing the equivalence whether the given Turing Machine also rejects absolutely everything it is given, thus having an empty language.  \\
+We begin by constructing a function $f$ that maps from  $<M>$ to  $<M,M1>$. Where $<M,M1>\in EQ_{TM}$ and $<M> \in E_{TM}$ .\\ \\ Let $f$ be the Turing machine that decides $E_{TM}$ and $R$ be the Turing Machine that decides $EQ_{TM}$. \\
+
+$f$ = On input $<M> $ ,where M is a Turing Machine.\\ 
+\indent 1. Run $R$ on input $<M,M1>$, where $M1$ is a the Turing Machines that rejects all inputs it is given. \\
+\indent 2. If $R$ accepts, then $accept$ \\
+\indent 3. If $R$ rejects, then $reject$ \\
+Output $<M,M1>$
+
+
+
+
+
 
  %%%%%%%%%%%%%%%%%%% Second Question%%%%%%%%%%%%%%%%%%%%%%%
 
