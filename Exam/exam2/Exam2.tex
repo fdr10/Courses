@@ -71,7 +71,7 @@ $U =$  ``On  input $<M,w>$, where $M$ is a TM and $w$ is a string: \\
    \indent 1) Simulate $M$ on $w$.\\
    \indent 2) If $M$ ever enters its accept state, $accept$. \\
    \indent 3) If $M$ ever enters its reject state,$reject$" \\ \\
-    It is said that the Turing Machine $U$ is recognizes $A_{TM}$, thus  \\ \\
+    It is said that the Turing Machine $U$ is recognizes $A_{TM}$, thus every decidable language is turing-recognizable. \\ \\
 b) The other proof will consist of showing that if language is recognizable, it is not necessarily a decidable language. \\ 
 \indent We assume $A_{TM}$ is decidable and obtain a contradiction. \\ 
 Suppose $H$ is a decider for $A_{TM}$. Namely \me{H(<M,w>)}, $accepts$ if M accepts $w$, $rejects$ if $M$ does not accept $w$. Now we will construct a new machine $D$ which determines what $M$ does when given its own description $M$. \\
