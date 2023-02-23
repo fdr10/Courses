@@ -1,0 +1,52 @@
+\documentclass{report}
+\usepackage{amsmath}
+\usepackage{tikz}
+\input{preamble}
+\title{Masters Theorem Proof}
+\author{Francisco Diaz}
+
+
+
+
+
+
+\begin{document}
+\maketitle{}
+
+$$T(n) = aT(n) + O(n^d)$$
+\[T(n) = \begin{cases}
+    O(n^{d\log(n)}) \ , \ \  \text{if} \ \ a = b^d \\
+    O(n^d) \ ,  \ \ \text{if} \ \ a < b^d\\
+    O(n^{\log_b(a)}) \ ,  \ \ \text{if} \ \ a > b^d 
+\end{cases}\]
+
+$$\text{number of problems} = a^j$$ \
+$$ \text{work} = a^j c(n/b^j)$$ \
+$$ \text{total work} = \\  \sum_{j=0}^{log_b(n)}a^j \cdot c(\dfrac{n}{b^j})^d= \sum_{j=0}^{log_2(n)}cn^d(\dfrac{a}{b^d})^j = cn^d\sum_{j=0}^{log_2(n)} (\dfrac{a}{b^d})^j $$
+\section{Case: $a < b^d$}
+$$\text{Suppose } \dfrac{a}{b^d} < 1$$
+$$ \text{then } cn^d\sum_{j=0}^{log_2(n)}\left(\dfrac{a}{b^d}\right) = cn^d \left(\dfrac{1}{1 - \dfrac{a}{b^d}}\right) = cn^d \left(\dfrac{b^d}{b^d - a}\right) = O(n^d)$$
+$$\text{Given that } a \text{ and } b \text{ are constant}$$ \\
+%\Tree [.$n$ $n/b$ [.$n/b$$$ ] ] \\ 
+
+
+
+
+\section{Case: $a>b^d$}
+$$\text{Suppose }\dfrac{a}{b^d} > 1$$
+$$ \sum_{j=0}^{x} r^j  = \dfrac{r^{x+1}-1}{r-1}$$
+$$T(n) = cn^d\left(\dfrac{\dfrac{a}{b^d}^{log_b(n)+1}-1}{\dfrac{a}{b^d}-1}\right)=O\left( n^d \dfrac{a^{log_b(n)}}{b^{d \cdot log(n^d)}}\right)$$
+
+$$O\left(n^d \dfrac{a^{log_b(n)}}{b^{log_b(n^d)}}\right)=O\left(n^d \dfrac{a^{log_b(n)}}{n^d}\right)= O\left(a^{log_b(n)}\right) = O\left(n^{log_b(a)}\right)$$  \\
+
+
+
+
+
+\section{Case $a=b^d$}
+$$ \text{Suppose} a = b^d$$
+$$\text{then } cn^d\sum_{j=0}^{log_b(n)}\left(\dfrac{a}{b^d}\right) = cn^d\left(log_b(n) + 1\right) = cn^d log_b(n) + cn^d$$
+
+$$ O\left(n^d log_b(n)\right)$$
+
+\end{document}

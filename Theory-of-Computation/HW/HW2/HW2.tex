@@ -1,0 +1,58 @@
+\documentclass{report}
+\usepackage{blindtext}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\newcommand{\me}[1]{
+\begin{math}
+#1
+\end{math}
+}
+\title{Home Work 2}
+\author{Francisco J. Díaz Riollano \\ Student ID: 802-15-2172 }
+
+
+\begin{document}
+
+\maketitle
+ %%%%%%%%%%%%%%%%%%% First Question%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{\Large{Question 1.4.3\\ \\}}
+ Is it the case that for each \me{i \in \mathbb{N},L^i \cap L^{i+1} = \o} ? If this indeed the case, prove it. Otherwise provide a counterexample.\\
+ \\ \\
+%%%%%%%%%%%%%%%%%%% First Question%%%%%%%%%%%%%%%%%%%%%%%%
+
+If \me{L} is not a string alphabet then this statement is False. A counterexample would be \me{L =\{0,00\}}, then \me{L^2 = \{00,000,000,0000\}}. Thus we have arrived at a contradiction.
+\newline
+This would be true if \me{\Sigma} were a string alphabet. As such:
+\\ Let L be a formal language over an alphabet \me{\Sigma}.\\  Such that \me{L = \{l:} l is a string over \me{\Sigma \}}
+\\ \\
+Proof:
+We first demonstrate by induction that \me{\forall a \in L^n,|a| = n}. \\ \\
+Then the proof will go as follows:
+\\ \\
+\textbf{Base Case:} \\ \\
+For \me{n=1}. Since L is a language over an alphabet \me{\Sigma} each \me{a \in L} is a symbol, and therefore \me{|a|=1.}
+\\ \\
+\begin{flushleft}
+	\textbf{Inductive Hypothesis:} \me{\forall a \in L^n, |a|=n}. Then,
+	\me{ L^{n+1} = L^nL= \{w:w =xy| x \in L^n \land y \in L\}} by property of concatenation.
+	
+	Since \me{|xy|  = |x| + |y|}, using the inductive hypothesis we get \me{|xy| = n +1}.
+	\newline \newline
+	By proving that every element in \me{L^n} cannot possibly be \me{L^{n+1}} and viceversa, the elements of each of these formal languages have different string length, we can conclude:
+\newline \newline
+	\me{i \in \mathbb{N},L^i \cap L^{i+1} = \o} 
+
+
+
+
+\end{flushleft}
+
+
+
+ %%%%%%%%%%%%%%%%%%% Second Question%%%%%%%%%%%%%%%%%%%%%%%
+ 
+%%%%%%%%%%%%%%%%%%% Second Question%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
